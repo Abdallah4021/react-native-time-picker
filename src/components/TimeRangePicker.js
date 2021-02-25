@@ -5,6 +5,7 @@ import { DatePicker } from '@davidgovea/react-native-wheel-datepicker';
 import moment from "moment"
 import { useDispatch } from 'react-redux';
 import { setPickedTime } from '../store/actions/user';
+import { useNavigation } from '@react-navigation/native';
 const TimeRangePicker = props => {
     const [firstSelected, setFirstSelected] = useState(true);
 
@@ -14,9 +15,12 @@ const TimeRangePicker = props => {
     const styles = customStyles(firstSelected)
     const dispatch = useDispatch()
 
+    const navigation = useNavigation()
+
     const onTimePicked = () => {
         const timePicked = moment(firstDate).format('hh:mm a') + " - " + moment(secondDate).format('hh:mm a')
         dispatch(setPickedTime(timePicked))
+        navigation.goBack()
     }
     // onTimePicked
     return (
