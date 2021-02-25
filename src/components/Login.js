@@ -1,16 +1,32 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import { View, Text, Image, TextInput, StyleSheet, } from 'react-native'
 import Button from '../uikit/Button'
+import auth from '@react-native-firebase/auth';
 
 const Login = props => {
     // use state hook
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-
     const onNextPressd = () => {
         console.log(validate(email));
         //TODO use firebase
+        auth()
+            .createUserWithEmailAndPassword(email, password)
+            .then(() => {
+                console.log('User account created & signed in!');
+            })
+            .catch(error => {
+                if (error.code === 'auth/email-already-in-use') {
+                    console.log('That email address is already in use!');
+                }
+
+                if (error.code === 'auth/invalid-email') {
+                    console.log('That email address is invalid!');
+                }
+
+                console.error(error);
+            });
     };
 
     //TODO move it to util folder.

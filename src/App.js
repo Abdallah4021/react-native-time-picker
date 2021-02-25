@@ -11,7 +11,7 @@ const App = () => {
     <>
       <SafeAreaView>
         <View>
-          <Home />
+          <Login />
         </View>
       </SafeAreaView>
     </>

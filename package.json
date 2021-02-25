@@ -12,9 +12,11 @@
   "dependencies": {
     "@davidgovea/react-native-wheel-datepicker": "^1.0.2",
     "@react-native-firebase/app": "^10.8.1",
+    "@react-native-firebase/auth": "^10.8.1",
     "moment": "^2.29.1",
     "react": "16.13.1",
-    "react-native": "0.63.4"
+    "react-native": "0.63.4",
+    "react-native-device-info": "^8.0.1"
   },
   "devDependencies": {
     "@babel/core": "^7.8.4",
