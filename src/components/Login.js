@@ -3,18 +3,24 @@ import { View, Text, Image, TextInput, StyleSheet, } from 'react-native'
 import Button from '../uikit/Button'
 import auth from '@react-native-firebase/auth';
 import { validate } from './utils';
+import { useSelector, useDispatch } from 'react-redux';
+import { setUser } from '../store/actions/user';
 const Login = props => {
     // use state hook
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const user = useSelector(state => state.user.user)
+
+    const dispatch = useDispatch()
 
     const onNextPressd = () => {
         // there is no password  validation, just Email validation.
-        console.log('login+ ' + validate(email.trim) + "  " + email.trim());
+        console.log("hi => " + user);
 
-        validate(email.trim()) && auth().signInWithEmailAndPassword(email.trim(), password.trim())
+        validate(email) && auth().signInWithEmailAndPassword(email, password)
             .then(() => {
                 console.log('User account created & signed in!');
+                dispatch(setUser(email))
             })
             .catch(error => {
                 if (error.code === 'auth/email-already-in-use') {
@@ -38,7 +44,7 @@ const Login = props => {
                 placeholder="Email address"
                 placeholderTextColor="gray"
                 style={styles.txtInput}
-                onChangeText={text => setEmail(text)}
+                onChangeText={text => setEmail(text.trim())}
                 value={email}
             />
 
@@ -47,7 +53,7 @@ const Login = props => {
                 placeholder="password"
                 placeholderTextColor="gray"
                 style={styles.txtInput}
-                onChangeText={text => setPassword(text)}
+                onChangeText={text => setPassword(text.trim())}
                 value={password}
             />
             {
