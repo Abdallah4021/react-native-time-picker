@@ -9,10 +9,9 @@ const Login = props => {
     const [password, setPassword] = useState('');
 
     const onNextPressd = () => {
-        console.log(validate(email));
-        //TODO use firebase
-        auth()
-            .createUserWithEmailAndPassword(email, password)
+        // there is no password  validation, just Email validation.
+        validate(email.trim) && auth()
+            .createUserWithEmailAndPassword(email.trim, password.trim)
             .then(() => {
                 console.log('User account created & signed in!');
             })
