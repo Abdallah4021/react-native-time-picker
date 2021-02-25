@@ -6,42 +6,34 @@ import { Picker } from '@davidgovea/react-native-wheel-datepicker';
 import TimeRangePicker from './TimeRangePicker';
 import moment from "moment";
 import { DatePicker } from '@davidgovea/react-native-wheel-datepicker';
+import { useNavigation } from '@react-navigation/native';
 
-const Home = props => {
+const Home = () => {
     // use state hook
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [homePage, setHomePage] = useState(false);
+    const [homePage, setHomePage] = useState(true);
     const [meetingTime, setMeetingTime] = useState('')
-
-    const TimePickerPage = () => {
-        return (<TimeRangePicker onTimePicked={(time) => { setMeetingTime(time); setHomePage(true) }} />)
-    }
-
-    const HomePage = () => {
-        return (
-            <View style={styles.header}>
-                <Text style={styles.txtHeader}>I'd like to book a meeting with busniess {"\n"} development at ...</Text>
-                <Button onPress={() => { setHomePage(false) }}>Time</Button>
-                {
-                    meetingTime.length > 0 && <Text style={styles.txtHeader}> You Already Booked a meeting at{"\n\n\n"} <Text style={{ fontSize: 30 }}>{meetingTime}</Text> </Text>
-                }
-            </View >
-        )
-    }
-
+    //TODO meetingTime to redux.
+    //navigation hook
+    const navigation = useNavigation();
 
     return (
-        homePage ? HomePage() : TimePickerPage()
+        <View style={styles.header}>
+            <Text style={styles.txtHeader}>I'd like to book a meeting with busniess {"\n"} development at ...</Text>
+            <Button onPress={() => navigation.push('Picker')}>Time</Button>
+            {
+                meetingTime.length > 0 && <Text style={styles.txtHeader}> You Already Booked a meeting at{"\n\n\n"} <Text style={{ fontSize: 30 }}>{meetingTime}</Text> </Text>
+            }
+        </View >
     )
 }
 
 const styles = StyleSheet.create({
     header: {
+        flex: 1,
         flexDirection: 'column',
-        justifyContent: 'center',
         alignItems: "center",
         backgroundColor: Colors.brand,
+        paddingTop: 30
     },
     txtHeader: {
         fontSize: 20,

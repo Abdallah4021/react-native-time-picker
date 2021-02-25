@@ -5,7 +5,7 @@ import auth from '@react-native-firebase/auth';
 import { validate } from './utils';
 import { useSelector, useDispatch } from 'react-redux';
 import { setUser } from '../store/actions/user';
-const Login = props => {
+const Login = () => {
     // use state hook
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');

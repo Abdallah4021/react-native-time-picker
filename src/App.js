@@ -5,6 +5,7 @@ import Home from "./components/Home";
 import { createStore, combineReducers } from 'redux';
 import userReducer from './store/reducers/user';
 import { Provider, useSelector } from 'react-redux';
+import AppNavigator from './navigation/AppNavigator';
 // best bractise to comine more than one reducers, if there is more than one.
 const rootReducer = combineReducers({
   user: userReducer
@@ -16,13 +17,11 @@ const App = () => {
 
   return (
     <Provider store={store}>
-      <>
-        <SafeAreaView>
-          <View>
-            <Login />
-          </View>
-        </SafeAreaView>
-      </>
+
+
+      <AppNavigator></AppNavigator>
+
+
     </Provider>
   );
 };
