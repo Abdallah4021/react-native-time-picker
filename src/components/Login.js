@@ -2,7 +2,7 @@ import React, { useState, useCallback, useEffect } from 'react';
 import { View, Text, Image, TextInput, StyleSheet, } from 'react-native'
 import Button from '../uikit/Button'
 import auth from '@react-native-firebase/auth';
-
+import { validate } from './utils';
 const Login = props => {
     // use state hook
     const [email, setEmail] = useState('');
@@ -10,8 +10,9 @@ const Login = props => {
 
     const onNextPressd = () => {
         // there is no password  validation, just Email validation.
-        validate(email.trim) && auth()
-            .createUserWithEmailAndPassword(email.trim, password.trim)
+        console.log('login+ ' + validate(email.trim) + "  " + email.trim());
+
+        validate(email.trim()) && auth().signInWithEmailAndPassword(email.trim(), password.trim())
             .then(() => {
                 console.log('User account created & signed in!');
             })
@@ -27,14 +28,6 @@ const Login = props => {
                 console.error(error);
             });
     };
-
-    //TODO move it to util folder.
-    // TODO validate password too. 
-    // memo 
-    const validate = useCallback((text) => {
-        let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-        return reg.test(text);
-    }, [])
 
     return (
         <View style={styles.header}>
