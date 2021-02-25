@@ -3,6 +3,8 @@ import { View, Text, Image, TextInput, StyleSheet, TouchableOpacity, } from 'rea
 import Colors from "../constants/colors";
 import { DatePicker } from '@davidgovea/react-native-wheel-datepicker';
 import moment from "moment"
+import { useDispatch } from 'react-redux';
+import { setPickedTime } from '../store/actions/user';
 const TimeRangePicker = props => {
     const [firstSelected, setFirstSelected] = useState(true);
 
@@ -10,10 +12,11 @@ const TimeRangePicker = props => {
     const [secondDate, setSecondDate] = useState(new Date());
 
     const styles = customStyles(firstSelected)
+    const dispatch = useDispatch()
 
     const onTimePicked = () => {
         const timePicked = moment(firstDate).format('hh:mm a') + " - " + moment(secondDate).format('hh:mm a')
-        props.onTimePicked(timePicked)
+        dispatch(setPickedTime(timePicked))
     }
     // onTimePicked
     return (

@@ -7,21 +7,19 @@ import TimeRangePicker from './TimeRangePicker';
 import moment from "moment";
 import { DatePicker } from '@davidgovea/react-native-wheel-datepicker';
 import { useNavigation } from '@react-navigation/native';
+import { useSelector } from 'react-redux';
 
 const Home = () => {
-    // use state hook
-    const [homePage, setHomePage] = useState(true);
-    const [meetingTime, setMeetingTime] = useState('')
-    //TODO meetingTime to redux.
     //navigation hook
     const navigation = useNavigation();
+    const timePicked = useSelector(state => state.user.timePicked)
 
     return (
         <View style={styles.header}>
             <Text style={styles.txtHeader}>I'd like to book a meeting with busniess {"\n"} development at ...</Text>
             <Button onPress={() => navigation.push('Picker')}>Time</Button>
             {
-                meetingTime.length > 0 && <Text style={styles.txtHeader}> You Already Booked a meeting at{"\n\n\n"} <Text style={{ fontSize: 30 }}>{meetingTime}</Text> </Text>
+                timePicked && <Text style={styles.txtHeader}> You Already Booked a meeting at{"\n\n\n"} <Text style={{ fontSize: 30 }}>{timePicked}</Text> </Text>
             }
         </View >
     )

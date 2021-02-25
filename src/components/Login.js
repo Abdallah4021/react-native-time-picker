@@ -15,7 +15,7 @@ const Login = () => {
 
     const onNextPressd = () => {
         // there is no password  validation, just Email validation.
-        console.log("hi => " + user);
+        console.log(email + " hi => " + user);
 
         validate(email) && auth().signInWithEmailAndPassword(email, password)
             .then(() => {
