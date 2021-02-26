@@ -20,7 +20,6 @@ export const setPickedTime = (PickedTime) => {
         });
 
         const resData = await response.json();
-        console.log(resData)
         //TODO u could save meeting id to global state. (resData.name)
         dispatch({ type: Set_Picked_Time, time: PickedTime })
     }

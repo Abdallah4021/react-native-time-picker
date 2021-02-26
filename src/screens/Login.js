@@ -17,11 +17,10 @@ const Login = () => {
 
     const onNextPressd = () => {
         // there is no password  validation, just Email validation.
-        console.log(email + " hi => " + user);
+
 
         validate(email) && auth().signInWithEmailAndPassword(email, password)
             .then(() => {
-                console.log('User account created & signed in!');
                 dispatch(setUser(email))
             })
             .catch(error => {
