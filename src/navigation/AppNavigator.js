@@ -6,9 +6,6 @@ import Home from '../components/Home';
 import TimeRangePicker from '../components/TimeRangePicker';
 import Login from '../components/Login';
 
-// import ShopNavigator from './ShopNavigator';
-// import ProductsOverviewScreen from '../screens/shop/ProductsOverviewScreen';
-
 const HomeStack = createStackNavigator();
 const Auth = createStackNavigator()
 
@@ -31,7 +28,7 @@ const AppNavigator = props => {
             </Auth.Navigator>
         )
     }
-
+    // to ensure the stay login, u need to use persist 
     return (
         <NavigationContainer>
             {isAuth ? HomeStackScreen() : AuthStack()}

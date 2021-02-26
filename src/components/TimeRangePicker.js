@@ -23,20 +23,9 @@ const TimeRangePicker = props => {
     const onTimePicked = () => {
         const timePicked = moment(firstDate).format('hh:mm a') + " - " + moment(secondDate).format('hh:mm a')
         dispatch(setPickedTime(timePicked))
-        saveOnFirebase(user, timePicked)
         navigation.goBack()
     }
 
-    const saveOnFirebase = (user, timePicked) => {
-        database()
-            .ref('/users/1142115')
-            .set({
-                email: user,
-                timePicked: timePicked,
-            })
-            .then(() => console.log('Data set.'));
-    }
-    // onTimePicked
     return (
         <View style={styles.container}>
 
