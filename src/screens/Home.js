@@ -1,11 +1,7 @@
-import React, { useState, useCallback } from 'react';
-import { View, Text, Image, TextInput, StyleSheet, } from 'react-native'
+import React from 'react';
+import { View, Text, StyleSheet, } from 'react-native'
 import Button from '../uikit/Button'
 import Colors from "../constants/colors";
-import { Picker } from '@davidgovea/react-native-wheel-datepicker';
-import TimeRangePicker from './TimeRangePicker';
-import moment from "moment";
-import { DatePicker } from '@davidgovea/react-native-wheel-datepicker';
 import { useNavigation } from '@react-navigation/native';
 import { useSelector } from 'react-redux';
 

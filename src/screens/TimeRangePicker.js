@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Dimensions, } from 'react-native'
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
 import Colors from "../constants/colors";
 import { DatePicker } from '@davidgovea/react-native-wheel-datepicker';
 import moment from "moment"
 import { useDispatch } from 'react-redux';
 import { setPickedTime } from '../store/actions/user';
 import { useNavigation } from '@react-navigation/native';
-import SpecificTime from './SpecificTime';
+import SpecificTime from '../components/SpecificTime';
+
 
 const TimeRangePicker = props => {
     const [firstSelected, setFirstSelected] = useState(true);
@@ -45,7 +46,6 @@ const TimeRangePicker = props => {
 
                 <DatePicker
                     style={styles.datePicker}
-                    itemStyle={{ color: "red" }}
                     mode="time"
                     use12Hours
                     date={firstSelected ? firstDate : secondDate}

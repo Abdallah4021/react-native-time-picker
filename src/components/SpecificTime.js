@@ -1,11 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, } from 'react-native'
+import { View, Text, StyleSheet } from 'react-native'
 import Colors from "../constants/colors";
-import { DatePicker } from '@davidgovea/react-native-wheel-datepicker';
-import moment from "moment"
-import { useDispatch } from 'react-redux';
 import { Picker } from '@davidgovea/react-native-wheel-datepicker';
-import Input from './Input';
+import Input from '../uikit/Input';
 
 const SpecificTime = props => {
     const styles = customStyles()

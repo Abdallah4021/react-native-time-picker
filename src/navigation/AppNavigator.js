@@ -2,9 +2,9 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import Home from '../components/Home';
-import TimeRangePicker from '../components/TimeRangePicker';
-import Login from '../components/Login';
+import Home from '../screens/Home';
+import TimeRangePicker from '../screens/TimeRangePicker';
+import Login from '../screens/Login';
 
 const HomeStack = createStackNavigator();
 const Auth = createStackNavigator()

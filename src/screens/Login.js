@@ -1,10 +1,12 @@
-import React, { useState, useCallback, useEffect } from 'react';
+import React, { useState } from 'react';
 import { View, Text, Image, TextInput, StyleSheet, } from 'react-native'
-import Button from '../uikit/Button'
 import auth from '@react-native-firebase/auth';
-import { validate } from './utils';
+
 import { useSelector, useDispatch } from 'react-redux';
+
+import { validate } from '../components/utils';
 import { setUser } from '../store/actions/user';
+import Button from '../uikit/Button';
 const Login = () => {
     // use state hook
     const [email, setEmail] = useState('');
