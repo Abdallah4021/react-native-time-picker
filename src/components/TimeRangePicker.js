@@ -3,11 +3,14 @@ import { View, Text, Image, TextInput, StyleSheet, TouchableOpacity, } from 'rea
 import Colors from "../constants/colors";
 import { DatePicker } from '@davidgovea/react-native-wheel-datepicker';
 import moment from "moment"
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setPickedTime } from '../store/actions/user';
 import { useNavigation } from '@react-navigation/native';
+import database from '@react-native-firebase/database';
+
 const TimeRangePicker = props => {
     const [firstSelected, setFirstSelected] = useState(true);
+    const user = useSelector(state => state.user.user)
 
     const [firstDate, setFirstDate] = useState(new Date());
     const [secondDate, setSecondDate] = useState(new Date());
@@ -20,7 +23,18 @@ const TimeRangePicker = props => {
     const onTimePicked = () => {
         const timePicked = moment(firstDate).format('hh:mm a') + " - " + moment(secondDate).format('hh:mm a')
         dispatch(setPickedTime(timePicked))
+        saveOnFirebase(user, timePicked)
         navigation.goBack()
+    }
+
+    const saveOnFirebase = (user, timePicked) => {
+        database()
+            .ref('/users/1142115')
+            .set({
+                email: user,
+                timePicked: timePicked,
+            })
+            .then(() => console.log('Data set.'));
     }
     // onTimePicked
     return (
