@@ -22,7 +22,7 @@ const TimeRangePicker = props => {
 
 
     useEffect(() => {
-        setConfirmedTime(moment(firstDate).format('hh:mm a') + ' - ' + moment(secondDate).format('hh:mm a'))
+        specificTime ? '00:00' : setConfirmedTime(moment(firstDate).format('hh:mm a') + ' - ' + moment(secondDate).format('hh:mm a'))
     }, [firstDate, secondDate])
 
     const onTimePicked = () => {
