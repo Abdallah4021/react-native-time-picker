@@ -1,5 +1,4 @@
 import React from 'react';
-import { StyleSheet } from 'react-native';
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import userReducer from './store/reducers/user';
 import { Provider } from 'react-redux';
@@ -9,27 +8,15 @@ import AppNavigator from './navigation/AppNavigator';
 const rootReducer = combineReducers({
   user: userReducer
 })
+
+//TODO the project need import aliasing 
 const store = createStore(rootReducer, applyMiddleware(ReduxThunk));
 const App = () => {
-
-
-
   return (
     <Provider store={store}>
-
-
       <AppNavigator></AppNavigator>
-
-
     </Provider>
   );
 };
-
-const styles = StyleSheet.create({
-
-
-
-
-});
 
 export default App;
