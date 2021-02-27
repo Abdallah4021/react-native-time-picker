@@ -13,7 +13,7 @@ const TimeRangePicker = props => {
     const [firstSelected, setFirstSelected] = useState(true);
     const [firstDate, setFirstDate] = useState(new Date());
     const [secondDate, setSecondDate] = useState(new Date());
-    const [specificTime, setSpecificTime] = useState(false); // should be true
+    const [specificTime, setSpecificTime] = useState(true);
     const [confirmedTime, setConfirmedTime] = useState('')
     const styles = customStyles(firstSelected, specificTime)
     const dispatch = useDispatch()
